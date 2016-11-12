@@ -1,0 +1,17 @@
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/assignment/UserGroup.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/secondary/SsJob.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/secondary/StockKey.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/assignment/UserReducer.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/secondary/SsMapper.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/secondary/SsReducer.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/wordcount/App.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/secondary/StockApp.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/assignment/UserKey.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/wordcount/WordCount.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/assignment/NaturalKeyGroupingComparator.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/secondary/NaturalKeyPartitioner.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/assignment/CompositeKeyComparator.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/assignment/NaturalKeyPartitioner.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/assignment/UserMapper.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/secondary/CompositeKeyComparator.java
+/Users/quocnghi/codes/HadoopAssignment/src/main/java/com/hadoop/secondary/NaturalKeyGroupingComparator.java
