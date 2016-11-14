@@ -17,7 +17,6 @@
 
 package com.hadoop.wordcount;
 
-import com.google.common.collect.Lists;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.FileSystem;
@@ -32,18 +31,17 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 
 import java.io.IOException;
-import java.util.List;
 import java.util.StringTokenizer;
 
 /**
- * 
+ *
  * @author Diego Pino García <dpino@igalia.com>
- * 
+ *
  * Canonical implementation at http://wiki.apache.org/hadoop/WordCount
  *
  */
 public class WordCount extends Configured implements Tool {
-	
+
 	public static class MapClass extends
 			Mapper<Object, Text, Text, IntWritable> {
 
@@ -63,7 +61,7 @@ public class WordCount extends Configured implements Tool {
 			}
 		}
 	}
-		
+
 	public static class Reduce extends
 			Reducer<Text, IntWritable, Text, IntWritable> {
 
@@ -71,7 +69,6 @@ public class WordCount extends Configured implements Tool {
 
 		@Override
 		protected void reduce(Text key, Iterable<IntWritable> values, Context context) throws IOException, InterruptedException {
-			List<IntWritable> temp = Lists.newArrayList(values);
 
 			int sum = 0;
 			for (IntWritable value : values) {
@@ -95,7 +92,7 @@ public class WordCount extends Configured implements Tool {
 
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
-		
+
         job.setMapperClass(MapClass.class);
         job.setReducerClass(Reduce.class);
 
@@ -104,16 +101,16 @@ public class WordCount extends Configured implements Tool {
 		// configuration should contain reference to your namenode
 		FileSystem fs = FileSystem.get(new Configuration());
 // true stands for recursively deleting the folder you gave
-		fs.delete(new Path("/Users/quocnghi/hadoop/wc-output"), true);
+//		fs.delete(new Path("/Users/quocnghi/hadoop/wc-output"), true);
 
 		FileInputFormat.setInputPaths(job, new Path("/Users/quocnghi/hadoop/wc-input"));
 		FileOutputFormat.setOutputPath(job, new Path("/Users/quocnghi/hadoop/wc-output"));
-
+//
 //		FileInputFormat.setInputPaths(job, new Path(args[0]));
 //		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 
 		boolean success = job.waitForCompletion(true);
-		return success ? 0 : 1; 
+		return success ? 0 : 1;
 	}
 
 }

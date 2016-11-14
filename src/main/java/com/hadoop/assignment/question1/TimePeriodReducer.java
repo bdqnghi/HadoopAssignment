@@ -1,6 +1,7 @@
 package com.hadoop.assignment.question1;
 
-import com.google.common.collect.Lists;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections.IteratorUtils;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -9,9 +10,7 @@ import org.joda.time.Seconds;
 import org.joda.time.format.DateTimeFormat;
 
 import java.io.IOException;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by quocnghi on 11/12/16.
@@ -19,20 +18,21 @@ import java.util.List;
 public class TimePeriodReducer extends Reducer<Text, Text, Text, IntWritable> {
 
     @Override
-    public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        Text k = new Text(key.toString());
+    public void reduce(Text userLocationKey, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+        List<String> temp =  new ArrayList<>();
 
-        List<Text> temp = Lists.newArrayList(values);
+        for(Text value : values){
+            temp.add(new String(value.toString()));
+        }
 
         temp = sort(temp);
         if (temp.size() == 1) {
-            context.write(k, new IntWritable(0));
+            context.write(userLocationKey, new IntWritable(0));
         } else {
 
             String previous = temp.get(0).toString();
             int sum = 0;
-            for (Text t : temp) {
-                String current = t.toString();
+            for (String current : temp) {
                 if(previous.compareTo(current) == 0){
                     continue;
                 }
@@ -53,13 +53,13 @@ public class TimePeriodReducer extends Reducer<Text, Text, Text, IntWritable> {
                 }
 
             }
-            context.write(k, new IntWritable(sum));
+            context.write(userLocationKey, new IntWritable(sum));
         }
     }
 
-    private List<Text> sort(List<Text> input) {
-        Collections.sort(input, new Comparator<Text>() {
-            public int compare(Text t1, Text t2) {
+    private List<String> sort(List<String> input) {
+        Collections.sort(input, new Comparator<String>() {
+            public int compare(String t1, String t2) {
                 String dateTimeString = t1.toString();
                 org.joda.time.format.DateTimeFormatter formatter = DateTimeFormat.forPattern("MM/dd/yy HH:mm");
                 DateTime dt1 = formatter.parseDateTime(dateTimeString);
@@ -75,5 +75,4 @@ public class TimePeriodReducer extends Reducer<Text, Text, Text, IntWritable> {
         });
         return input;
     }
-
 }

@@ -1,6 +1,5 @@
 package com.hadoop.assignment.question1;
 
-import com.google.common.collect.Lists;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
@@ -14,10 +13,16 @@ public class LocationFindingReducer extends Reducer<Text, Text, Text, Text> {
 
     @Override
     public void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        List<Text> list = Lists.newArrayList(values);
-        Map<Integer, String> map = new TreeMap<>();
 
-        for (Text t : list) {
+        Comparator<Integer> reverseComparator = new Comparator<Integer>() {
+            @Override
+            public int compare(Integer i1, Integer i2) {
+                return i2.compareTo(i1);
+            }
+        };
+
+        SortedMap<Integer, String> map = new TreeMap<>(reverseComparator);
+        for (Text t : values) {
             String value = t.toString();
             String[] tokens = value.split(",");
             String location = tokens[0];
@@ -26,8 +31,20 @@ public class LocationFindingReducer extends Reducer<Text, Text, Text, Text> {
         }
 
         List<String> locations = new ArrayList<>(map.values());
-        for (int i = 0; i < 10; i++) {
-            context.write(key, new Text(locations.get(i)));
+        String topNLocations = getTopNLocation(10, locations);
+        context.write(key, new Text(topNLocations));
+    }
+
+    private String getTopNLocation(int N, List<String> locations) {
+        StringBuilder sb = new StringBuilder();
+        int realN = N;
+        if (locations.size() < N) {
+            realN = locations.size();
         }
+        for (int i = 0; i < realN; i++) {
+            sb.append(locations.get(i)).append(",");
+        }
+        sb.setLength(sb.length() - 1);
+        return sb.toString();
     }
 }

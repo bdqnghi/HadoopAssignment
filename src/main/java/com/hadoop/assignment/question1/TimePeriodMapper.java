@@ -13,10 +13,12 @@ public class TimePeriodMapper extends Mapper<LongWritable, Text, Text, Text> {
 
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        String[] tokens = value.toString().split(";");
-        String userLocation = tokens[0];
-        String timestamp = tokens[1];
+        String[] tokens = value.toString().split(",");
 
-        context.write(new Text(userLocation), new Text(timestamp));
+        String userId = tokens[1].trim();
+        String locationId = tokens[2].trim();
+        Text timestamp = new Text(tokens[0].trim());
+
+        context.write(new Text(userId + "," + locationId), timestamp);
     }
 }
