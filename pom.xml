@@ -31,7 +31,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.hadoop.secondary.StockApp</mainClass>
+              <mainClass>com.hadoop.wordcount.App</mainClass>
             </manifest>
           </archive>
           <descriptorRefs>
