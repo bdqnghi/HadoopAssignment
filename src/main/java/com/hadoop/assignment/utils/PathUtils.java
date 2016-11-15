@@ -10,5 +10,6 @@ public class PathUtils {
 
     public static String INPUT_PATH = "/home/quocnghi/hadoop_assignment/location-input";
     public static String TEMP_PATH = "/home/quocnghi/hadoop_assignment/location-temp";
+    public static String TEMP2_PATH = "/home/quocnghi/hadoop_assignment/location-temp2";
     public static String OUTPUT_PATH = "/home/quocnghi/hadoop_assignment/location-output";
 }

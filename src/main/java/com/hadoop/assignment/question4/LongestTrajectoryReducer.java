@@ -17,14 +17,12 @@ public class LongestTrajectoryReducer extends Reducer<Text, Text, Text, Text> {
 
     @Override
     public void reduce(Text userKey, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        SortedMap<Integer, String> sortedMap = new TreeMap<>(ComparatorUtils.getDescendingIntegerComparator());
+        SortedMap<String, String> sortedMap = new TreeMap<>(ComparatorUtils.getDescendingTimeStampComparator());
 
-        for (Text value : values) {
+        for(Text value : values){
             String[] tokens = value.toString().split(",");
-            String locations = StringUtils.join(Arrays.copyOfRange(tokens, 0, tokens.length - 1), ",");
-            sortedMap.put(Integer.parseInt(tokens[tokens.length - 1]), locations);
+            sortedMap.put(tokens[0], StringUtils.join(Arrays.copyOfRange(tokens,1,tokens.length),","));
         }
-
-        context.write(userKey, new Text(sortedMap.get(sortedMap.firstKey())));
+        context.write(userKey,new Text(sortedMap.get(sortedMap.firstKey())));
     }
 }

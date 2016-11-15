@@ -16,7 +16,7 @@ public class UserDayReducer extends Reducer<Text, Text, Text, IntWritable> {
     @Override
     public void reduce(Text userDayHourKey, Iterable<Text> values, Context context) throws IOException, InterruptedException {
 
-        SortedMap<String, String> sortedMap = new TreeMap<>(ComparatorUtils.getMinuteSecondComparator());
+        SortedMap<String, String> sortedMap = new TreeMap<>(ComparatorUtils.getDescendMinuteSecondComparator());
 
         for (Text value : values) {
             String s = value.toString();

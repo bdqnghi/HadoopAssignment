@@ -11,7 +11,7 @@ import java.util.Arrays;
 /**
  * Created by quocnghi on 15/11/16.
  */
-public class LongestTrajectoryMapper extends Mapper<LongWritable, Text, Text, Text> {
+public class LongestTrajectoriesMapper extends Mapper<LongWritable, Text, Text, Text> {
 
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {

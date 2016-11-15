@@ -5,9 +5,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.ArrayWritable;
-import org.apache.hadoop.io.DoubleWritable;
-import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -34,36 +31,36 @@ public class QuestionFourJob extends Configured implements Tool {
         Configuration conf = getConf();
 
         //-----------------------------------------------------------
-        FileUtils.deleteDirectory(new File(PathUtils.TEMP_PATH));
-        conf.set("mapred.textoutputformat.separator", ",");
+//        FileUtils.deleteDirectory(new File(PathUtils.TEMP_PATH));
+//        conf.set("mapred.textoutputformat.separator", ",");
+//
+//        Job job1 = new Job(conf, "job1");
+//
+//        job1.setJarByClass(QuestionFourJob.class);
+//
+//        job1.setMapOutputKeyClass(Text.class);
+//        job1.setMapOutputValueClass(Text.class);
+//
+//        job1.setOutputKeyClass(Text.class);
+//        job1.setOutputValueClass(Text.class);
+//
+//        job1.setInputFormatClass(TextInputFormat.class);
+//        job1.setOutputFormatClass(TextOutputFormat.class);
+//
+//        job1.setMapperClass(UserDayMapper.class);
+//        job1.setReducerClass(UserDayReducer.class);
+//
+//        FileInputFormat.setInputPaths(job1, new Path(PathUtils.INPUT_PATH));
+//        FileOutputFormat.setOutputPath(job1, new Path(PathUtils.TEMP_PATH));
 
-        Job job1 = new Job(conf, "job1");
-
-        job1.setJarByClass(QuestionFourJob.class);
-
-        job1.setMapOutputKeyClass(Text.class);
-        job1.setMapOutputValueClass(Text.class);
-
-        job1.setOutputKeyClass(Text.class);
-        job1.setOutputValueClass(Text.class);
-
-        job1.setInputFormatClass(TextInputFormat.class);
-        job1.setOutputFormatClass(TextOutputFormat.class);
-
-        job1.setMapperClass(UserDayMapper.class);
-        job1.setReducerClass(UserDayReducer.class);
-
-        FileInputFormat.setInputPaths(job1, new Path(PathUtils.INPUT_PATH));
-        FileOutputFormat.setOutputPath(job1, new Path(PathUtils.TEMP_PATH));
-
-        boolean success = job1.waitForCompletion(true);
-
+        //boolean success = job1.waitForCompletion(true);
+        boolean success = true;
         // -------------------------------------------------
 
         if (success) {
-            FileUtils.deleteDirectory(new File(PathUtils.OUTPUT_PATH));
+            FileUtils.deleteDirectory(new File(PathUtils.TEMP2_PATH));
 
-            conf.set("mapred.textoutputformat.separator", " ");
+            conf.set("mapred.textoutputformat.separator", ",");
             Job job2 = new Job(conf, "job2");
 
             job2.setJarByClass(QuestionFourJob.class);
@@ -77,13 +74,39 @@ public class QuestionFourJob extends Configured implements Tool {
             job2.setInputFormatClass(TextInputFormat.class);
             job2.setOutputFormatClass(TextOutputFormat.class);
 
-            job2.setMapperClass(LongestTrajectoryMapper.class);
-            job2.setReducerClass(LongestTrajectoryReducer.class);
+            job2.setMapperClass(LongestTrajectoriesMapper.class);
+            job2.setReducerClass(LongestTrajectoriesReducer.class);
 
             FileInputFormat.setInputPaths(job2, new Path(PathUtils.TEMP_PATH));
-            FileOutputFormat.setOutputPath(job2, new Path(PathUtils.OUTPUT_PATH));
+            FileOutputFormat.setOutputPath(job2, new Path(PathUtils.TEMP2_PATH));
 
-            job2.waitForCompletion(true);
+            boolean success2  = job2.waitForCompletion(true);
+
+            if(success2){
+                FileUtils.deleteDirectory(new File(PathUtils.OUTPUT_PATH));
+
+                conf.set("mapred.textoutputformat.separator", " ");
+                Job job3 = new Job(conf, "job3");
+
+                job3.setJarByClass(QuestionFourJob.class);
+
+                job3.setMapOutputKeyClass(Text.class);
+                job3.setMapOutputValueClass(Text.class);
+
+                job3.setOutputKeyClass(Text.class);
+                job3.setOutputValueClass(Text.class);
+
+                job3.setInputFormatClass(TextInputFormat.class);
+                job3.setOutputFormatClass(TextOutputFormat.class);
+
+                job3.setMapperClass(LongestTrajectoryMapper.class);
+                job3.setReducerClass(LongestTrajectoryReducer.class);
+
+                FileInputFormat.setInputPaths(job3, new Path(PathUtils.TEMP2_PATH));
+                FileOutputFormat.setOutputPath(job3, new Path(PathUtils.OUTPUT_PATH));
+
+                job3.waitForCompletion(true);
+            }
         }
 
         return 0;
