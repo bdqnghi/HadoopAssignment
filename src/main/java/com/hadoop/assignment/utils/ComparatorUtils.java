@@ -48,10 +48,10 @@ public class ComparatorUtils {
                 dateTimeString = t2.toString();
                 DateTime dt2 = formatter.parseDateTime(dateTimeString);
 
-                if (dt1.isBefore(dt2))
+                if (dt1.isAfter(dt2))
                     return -1;
                 else
-                    if(dt1.isAfter(dt2))
+                    if(dt1.isBefore(dt2))
                         return 1;
                     else
                         return 0;
