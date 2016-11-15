@@ -17,7 +17,7 @@ public class LongestTrajectoryReducer extends Reducer<Text, Text, Text, Text> {
 
     @Override
     public void reduce(Text userKey, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        SortedMap<String, String> sortedMap = new TreeMap<>(ComparatorUtils.getDescendingTimeStampComparator());
+        SortedMap<String, String> sortedMap = new TreeMap<>(ComparatorUtils.getDescendingYearMonthDayComparator());
 
         for(Text value : values){
             String[] tokens = value.toString().split(",");
