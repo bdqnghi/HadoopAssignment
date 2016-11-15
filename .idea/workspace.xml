@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="095deab4-7ce1-466d-847c-83f1d8530c66" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/utils/ComparatorUtils.java" afterPath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/utils/ComparatorUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationCountReducer.java" afterPath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationCountReducer.java" />
     </list>
     <ignored path="HadoopAssigment.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,11 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ComparatorUtils.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ComparatorUtils.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/utils/ComparatorUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+            <state relative-caret-position="468">
+              <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -41,8 +41,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LocationFindingReducer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question1/LocationFindingReducer.java">
+      <file leaf-file-name="QuestionThreeJob.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question3/QuestionThreeJob.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-609">
+              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocationUserCountReducer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationUserCountReducer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
               <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
@@ -51,11 +61,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PathUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/utils/PathUtils.java">
+      <file leaf-file-name="LocationCountMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationCountMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+            <state relative-caret-position="126">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocationUserCountMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationUserCountMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="72">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -69,6 +89,16 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LocationCountReducer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationCountReducer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="327">
+              <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -93,38 +123,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LocationCountReducer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationCountReducer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="17" column="105" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="105" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="QuestionFourJob.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/QuestionFourJob.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="900">
-              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LongestTrajectoryMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/LongestTrajectoryMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -167,7 +165,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/UserLocationDayMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/UserLocationDayReducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/StringArrayWritable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationCountReducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/TextArrayWritable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/UserDayMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/UserDayReducer.java" />
@@ -177,6 +174,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/QuestionFourJob.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/LongestTrajectoriesReducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/utils/ComparatorUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationCountReducer.java" />
       </list>
     </option>
   </component>
@@ -975,6 +973,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -997,6 +996,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="936">
           <caret line="67" column="50" selection-start-line="67" selection-start-column="50" selection-end-line="67" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1013,13 +1013,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question3/QuestionThreeJob.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1042,6 +1035,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="311">
           <caret line="69" column="0" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1068,28 +1062,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/StringArrayWritable.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationUserCountMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/TextArrayWritable.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationUserCountReducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationCountMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question3/UserTransitionReducer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1171,14 +1144,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationCountReducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="17" column="105" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="105" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/QuestionFourJob.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
@@ -1251,11 +1216,51 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/utils/ComparatorUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+        <state relative-caret-position="468">
+          <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question3/QuestionThreeJob.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-609">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationUserCountMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationUserCountReducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationCountMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationCountReducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="28" column="48" selection-start-line="28" selection-start-column="48" selection-end-line="28" selection-end-column="48" />
+          <folding />
         </state>
       </provider>
     </entry>

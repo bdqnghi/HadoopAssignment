@@ -5,7 +5,10 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 /**
  * Created by quocnghi on 11/14/16.
@@ -23,6 +26,7 @@ public class LocationCountReducer extends Reducer<Text, Text, Text, Text> {
         }
 
         List<String> users = new ArrayList<>(map.values());
+        // Get Top N users, in this case, N = 10
         String topNUsers = getTopNUsers(10, users);
         context.write(locationKey, new Text(topNUsers));
 
@@ -40,6 +44,4 @@ public class LocationCountReducer extends Reducer<Text, Text, Text, Text> {
         sb.setLength(sb.length() - 1);
         return sb.toString();
     }
-
-
 }
