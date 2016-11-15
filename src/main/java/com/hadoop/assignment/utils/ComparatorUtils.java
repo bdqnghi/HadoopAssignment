@@ -27,4 +27,13 @@ public class ComparatorUtils {
             }
         };
     }
+
+    public static Comparator getDescendingIntegerComparator(){
+        return new Comparator<Integer>() {
+            @Override
+            public int compare(Integer i1, Integer i2) {
+                return i2.compareTo(i1);
+            }
+        };
+    }
 }

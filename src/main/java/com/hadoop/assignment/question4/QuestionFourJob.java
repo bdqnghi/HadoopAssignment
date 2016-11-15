@@ -1,15 +1,11 @@
 package com.hadoop.assignment.question4;
 
-
-import com.hadoop.assignment.question3.UserDayMapper;
-import com.hadoop.assignment.question3.UserDayReducer;
-import com.hadoop.assignment.question3.UserTransitionMapper;
-import com.hadoop.assignment.question3.UserTransitionReducer;
 import com.hadoop.assignment.utils.PathUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.ArrayWritable;
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
@@ -40,7 +36,7 @@ public class QuestionFourJob extends Configured implements Tool {
         //-----------------------------------------------------------
         FileUtils.deleteDirectory(new File(PathUtils.TEMP_PATH));
         conf.set("mapred.textoutputformat.separator", ",");
-        conf.set("previous.location","");
+
         Job job1 = new Job(conf, "job1");
 
         job1.setJarByClass(QuestionFourJob.class);
@@ -49,7 +45,7 @@ public class QuestionFourJob extends Configured implements Tool {
         job1.setMapOutputValueClass(Text.class);
 
         job1.setOutputKeyClass(Text.class);
-        job1.setOutputValueClass(IntWritable.class);
+        job1.setOutputValueClass(Text.class);
 
         job1.setInputFormatClass(TextInputFormat.class);
         job1.setOutputFormatClass(TextOutputFormat.class);
@@ -73,16 +69,16 @@ public class QuestionFourJob extends Configured implements Tool {
             job2.setJarByClass(QuestionFourJob.class);
 
             job2.setMapOutputKeyClass(Text.class);
-            job2.setMapOutputValueClass(IntWritable.class);
+            job2.setMapOutputValueClass(Text.class);
 
             job2.setOutputKeyClass(Text.class);
-            job2.setOutputValueClass(DoubleWritable.class);
+            job2.setOutputValueClass(Text.class);
 
             job2.setInputFormatClass(TextInputFormat.class);
             job2.setOutputFormatClass(TextOutputFormat.class);
 
-            job2.setMapperClass(UserTransitionMapper.class);
-            job2.setReducerClass(UserTransitionReducer.class);
+            job2.setMapperClass(LongestTrajectoryMapper.class);
+            job2.setReducerClass(LongestTrajectoryReducer.class);
 
             FileInputFormat.setInputPaths(job2, new Path(PathUtils.TEMP_PATH));
             FileOutputFormat.setOutputPath(job2, new Path(PathUtils.OUTPUT_PATH));

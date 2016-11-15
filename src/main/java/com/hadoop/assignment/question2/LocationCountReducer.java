@@ -1,5 +1,6 @@
 package com.hadoop.assignment.question2;
 
+import com.hadoop.assignment.utils.ComparatorUtils;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
@@ -13,14 +14,8 @@ public class LocationCountReducer extends Reducer<Text, Text, Text, Text> {
 
     @Override
     public void reduce(Text locationKey, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        Comparator<Integer> reverseComparator = new Comparator<Integer>() {
-            @Override
-            public int compare(Integer i1, Integer i2) {
-                return i2.compareTo(i1);
-            }
-        };
 
-        SortedMap<Integer, String> map = new TreeMap<>(reverseComparator);
+        SortedMap<Integer, String> map = new TreeMap<>(ComparatorUtils.getDescendingIntegerComparator());
         for (Text value : values) {
             String text = value.toString();
             String[] tokens = text.split(",");
