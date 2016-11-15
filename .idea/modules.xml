@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HadoopAssignment.iml" filepath="$PROJECT_DIR$/HadoopAssignment.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HadoopAssigment.iml" filepath="$PROJECT_DIR$/HadoopAssigment.iml" />
     </modules>
   </component>
 </project>

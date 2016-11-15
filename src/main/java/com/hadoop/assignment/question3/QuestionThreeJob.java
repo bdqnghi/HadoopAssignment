@@ -1,6 +1,7 @@
 package com.hadoop.assignment.question3;
 
 
+import com.hadoop.assignment.utils.PathUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -33,7 +34,7 @@ public class QuestionThreeJob extends Configured implements Tool {
         Configuration conf = getConf();
 
         //-----------------------------------------------------------
-        FileUtils.deleteDirectory(new File("/Users/quocnghi/hadoop/location-temp"));
+        FileUtils.deleteDirectory(new File(PathUtils.TEMP_PATH));
         conf.set("mapred.textoutputformat.separator", ",");
         Job job1 = new Job(conf, "job1");
 
@@ -51,15 +52,15 @@ public class QuestionThreeJob extends Configured implements Tool {
         job1.setMapperClass(UserDayMapper.class);
         job1.setReducerClass(UserDayReducer.class);
 
-        FileInputFormat.setInputPaths(job1, new Path("/Users/quocnghi/hadoop/location-input"));
-        FileOutputFormat.setOutputPath(job1, new Path("/Users/quocnghi/hadoop/location-temp"));
+        FileInputFormat.setInputPaths(job1, new Path(PathUtils.INPUT_PATH));
+        FileOutputFormat.setOutputPath(job1, new Path(PathUtils.TEMP_PATH));
 
         boolean success = job1.waitForCompletion(true);
 
         // -------------------------------------------------
 
         if (success) {
-            FileUtils.deleteDirectory(new File("/Users/quocnghi/hadoop/location-output"));
+            FileUtils.deleteDirectory(new File(PathUtils.OUTPUT_PATH));
 
             conf.set("mapred.textoutputformat.separator", " ");
             Job job2 = new Job(conf, "job2");
@@ -78,8 +79,8 @@ public class QuestionThreeJob extends Configured implements Tool {
             job2.setMapperClass(UserTransitionMapper.class);
             job2.setReducerClass(UserTransitionReducer.class);
 
-            FileInputFormat.setInputPaths(job2, new Path("/Users/quocnghi/hadoop/location-temp"));
-            FileOutputFormat.setOutputPath(job2, new Path("/Users/quocnghi/hadoop/location-output"));
+            FileInputFormat.setInputPaths(job2, new Path(PathUtils.TEMP_PATH));
+            FileOutputFormat.setOutputPath(job2, new Path(PathUtils.OUTPUT_PATH));
 
             job2.waitForCompletion(true);
         }

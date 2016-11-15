@@ -1,0 +1,15 @@
+# OS X
+.DS_Store
+
+# Intellij
+*.iml
+.idea/
+
+#Target
+target/
+
+.classpath
+
+.project
+
+.settings/

@@ -1,6 +1,7 @@
 package com.hadoop.assignment.question1;
 
 
+import com.hadoop.assignment.utils.PathUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -31,7 +32,7 @@ public class QuestionOneJob extends Configured implements Tool {
     public int run(String[] strings) throws Exception {
         Configuration conf = getConf();
 
-//        FileUtils.deleteDirectory(new File("/Users/quocnghi/hadoop/location-output"));
+//        FileUtils.deleteDirectory(new File(PathUtils.OUTPUT_PATH));
 //        conf.set("mapred.textoutputformat.separator", ";");
 //
 //        Job userLocationJob = new Job(conf, "user location group job");
@@ -53,13 +54,13 @@ public class QuestionOneJob extends Configured implements Tool {
 //        userLocationJob.setMapperClass(UserMapper.class);
 //        userLocationJob.setReducerClass(UserReducer.class);
 //
-//        FileInputFormat.setInputPaths(userLocationJob, new Path("/Users/quocnghi/hadoop/location-input"));
-//        FileOutputFormat.setOutputPath(userLocationJob, new Path("/Users/quocnghi/hadoop/location-output"));
+//        FileInputFormat.setInputPaths(userLocationJob, new Path(PathUtils.INPUT_PATH));
+//        FileOutputFormat.setOutputPath(userLocationJob, new Path(PathUtils.OUTPUT_PATH));
 //
 //        userLocationJob.waitForCompletion(true);
 
         //-----------------------------------------------------------
-        FileUtils.deleteDirectory(new File("/Users/quocnghi/hadoop/location-temp"));
+        FileUtils.deleteDirectory(new File(PathUtils.TEMP_PATH));
         conf.set("mapred.textoutputformat.separator", ",");
         Job timePeriodJob = new Job(conf, "time period job");
 
@@ -77,15 +78,15 @@ public class QuestionOneJob extends Configured implements Tool {
         timePeriodJob.setMapperClass(TimePeriodMapper.class);
         timePeriodJob.setReducerClass(TimePeriodReducer.class);
 
-        FileInputFormat.setInputPaths(timePeriodJob, new Path("/Users/quocnghi/hadoop/location-input"));
-        FileOutputFormat.setOutputPath(timePeriodJob, new Path("/Users/quocnghi/hadoop/location-temp"));
+        FileInputFormat.setInputPaths(timePeriodJob, new Path(PathUtils.INPUT_PATH));
+        FileOutputFormat.setOutputPath(timePeriodJob, new Path(PathUtils.TEMP_PATH));
 
         boolean success = timePeriodJob.waitForCompletion(true);
 
         // -------------------------------------------------
 
         if (success) {
-            FileUtils.deleteDirectory(new File("/Users/quocnghi/hadoop/location-output"));
+            FileUtils.deleteDirectory(new File(PathUtils.OUTPUT_PATH));
             conf.set("mapred.textoutputformat.separator", " ");
             Job locationFindingJob = new Job(conf, "time period job");
 
@@ -103,8 +104,8 @@ public class QuestionOneJob extends Configured implements Tool {
             locationFindingJob.setMapperClass(LocationFindingMapper.class);
             locationFindingJob.setReducerClass(LocationFindingReducer.class);
 
-            FileInputFormat.setInputPaths(locationFindingJob, new Path("/Users/quocnghi/hadoop/location-temp"));
-            FileOutputFormat.setOutputPath(locationFindingJob, new Path("/Users/quocnghi/hadoop/location-output"));
+            FileInputFormat.setInputPaths(locationFindingJob, new Path(PathUtils.TEMP_PATH));
+            FileOutputFormat.setOutputPath(locationFindingJob, new Path(PathUtils.OUTPUT_PATH));
 
             locationFindingJob.waitForCompletion(true);
         }

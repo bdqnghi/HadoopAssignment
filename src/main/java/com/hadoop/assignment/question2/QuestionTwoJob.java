@@ -1,6 +1,7 @@
 package com.hadoop.assignment.question2;
 
 
+import com.hadoop.assignment.utils.PathUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -32,7 +33,7 @@ public class QuestionTwoJob extends Configured implements Tool {
         Configuration conf = getConf();
 
         //-----------------------------------------------------------
-        FileUtils.deleteDirectory(new File("/Users/quocnghi/hadoop/location-temp"));
+        FileUtils.deleteDirectory(new File(PathUtils.TEMP_PATH));
         conf.set("mapred.textoutputformat.separator", ",");
         Job job1 = new Job(conf, "job1");
 
@@ -50,15 +51,15 @@ public class QuestionTwoJob extends Configured implements Tool {
         job1.setMapperClass(LocationUserCountMapper.class);
         job1.setReducerClass(LocationUserCountReducer.class);
 
-        FileInputFormat.setInputPaths(job1, new Path("/Users/quocnghi/hadoop/location-input"));
-        FileOutputFormat.setOutputPath(job1, new Path("/Users/quocnghi/hadoop/location-temp"));
+        FileInputFormat.setInputPaths(job1, new Path(PathUtils.INPUT_PATH));
+        FileOutputFormat.setOutputPath(job1, new Path(PathUtils.TEMP_PATH));
 
         boolean success = job1.waitForCompletion(true);
 
         // -------------------------------------------------
 
         if (success) {
-            FileUtils.deleteDirectory(new File("/Users/quocnghi/hadoop/location-output"));
+            FileUtils.deleteDirectory(new File(PathUtils.OUTPUT_PATH));
 
             Job job2 = new Job(conf, "job2");
 
@@ -76,8 +77,8 @@ public class QuestionTwoJob extends Configured implements Tool {
             job2.setMapperClass(LocationCountMapper.class);
             job2.setReducerClass(LocationCountReducer.class);
 
-            FileInputFormat.setInputPaths(job2, new Path("/Users/quocnghi/hadoop/location-temp"));
-            FileOutputFormat.setOutputPath(job2, new Path("/Users/quocnghi/hadoop/location-output"));
+            FileInputFormat.setInputPaths(job2, new Path(PathUtils.TEMP_PATH));
+            FileOutputFormat.setOutputPath(job2, new Path(PathUtils.OUTPUT_PATH));
 
             job2.waitForCompletion(true);
         }
