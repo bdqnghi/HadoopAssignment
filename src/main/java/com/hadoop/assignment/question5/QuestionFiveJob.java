@@ -38,13 +38,14 @@ public class QuestionFiveJob extends Configured implements Tool {
     public int run(String[] args) throws Exception {
         Configuration conf = getConf();
         String currentDir = System.getProperty("user.dir");
+        System.out.println("Current dir : " + currentDir);
         if (args.length == 0) {
             System.err.println("Please specified input parameters");
         } else {
-            INPUT_PATH = currentDir + args[0];
-            OUTPUT_PATH = currentDir + args[1];
-            TEMP_PATH = currentDir + "temp";
-            TEMP2_PATH = currentDir + "temp2";
+            INPUT_PATH = args[0];
+            OUTPUT_PATH = args[1];
+            TEMP_PATH = "temp";
+            TEMP2_PATH = "temp2";
         }
 
         //-----------------------------------------------------------
@@ -97,7 +98,7 @@ public class QuestionFiveJob extends Configured implements Tool {
             FileInputFormat.setInputPaths(job2, new Path(TEMP_PATH));
             FileOutputFormat.setOutputPath(job2, new Path(TEMP2_PATH));
 
-            boolean success2 =  job2.waitForCompletion(true);
+            boolean success2 = job2.waitForCompletion(true);
             if (success2) {
                 FileUtils.deleteDirectory(new File(OUTPUT_PATH));
 
