@@ -23,44 +23,29 @@ import java.io.File;
  */
 public class QuestionOneJob extends Configured implements Tool {
 
+    public static String INPUT_PATH = PathUtils.TEMP_PATH;
+    public static String TEMP_PATH = PathUtils.TEMP_PATH;
+    public static String TEMP2_PATH = PathUtils.TEMP2_PATH;
+    public static String OUTPUT_PATH = PathUtils.OUTPUT_PATH;
 
     public static void main(String[] args) throws Exception {
         ToolRunner.run(new Configuration(), new QuestionOneJob(), args);
     }
 
     @Override
-    public int run(String[] strings) throws Exception {
+    public int run(String[] args) throws Exception {
         Configuration conf = getConf();
-
-//        FileUtils.deleteDirectory(new File(PathUtils.OUTPUT_PATH));
-//        conf.set("mapred.textoutputformat.separator", ";");
-//
-//        Job userLocationJob = new Job(conf, "user location group job");
-//
-//        userLocationJob.setJarByClass(UserGroupJob.class);
-////		job.setPartitionerClass(NaturalKeyPartitioner.class);
-////		job.setGroupingComparatorClass(NaturalKeyGroupingComparator.class);
-//        userLocationJob.setSortComparatorClass(CompositeKeyComparator.class);
-//
-//        userLocationJob.setMapOutputKeyClass(UserLocationKey.class);
-//        userLocationJob.setMapOutputValueClass(Text.class);
-//
-//        userLocationJob.setOutputKeyClass(Text.class);
-//        userLocationJob.setOutputValueClass(Text.class);
-//
-//        userLocationJob.setInputFormatClass(TextInputFormat.class);
-//        userLocationJob.setOutputFormatClass(TextOutputFormat.class);
-//
-//        userLocationJob.setMapperClass(UserMapper.class);
-//        userLocationJob.setReducerClass(UserReducer.class);
-//
-//        FileInputFormat.setInputPaths(userLocationJob, new Path(PathUtils.INPUT_PATH));
-//        FileOutputFormat.setOutputPath(userLocationJob, new Path(PathUtils.OUTPUT_PATH));
-//
-//        userLocationJob.waitForCompletion(true);
-
+        String currentDir = System.getProperty("user.dir");
+        if (args.length == 0) {
+            System.err.println("Please specified input parameters");
+        } else {
+            INPUT_PATH = currentDir + args[0];
+            OUTPUT_PATH = currentDir + args[1];
+            TEMP_PATH = currentDir + "temp";
+            TEMP2_PATH = currentDir + "temp2";
+        }
         //-----------------------------------------------------------
-        FileUtils.deleteDirectory(new File(PathUtils.TEMP_PATH));
+        FileUtils.deleteDirectory(new File(TEMP_PATH));
         conf.set("mapred.textoutputformat.separator", ",");
         Job timePeriodJob = new Job(conf, "time period job");
 
@@ -78,15 +63,15 @@ public class QuestionOneJob extends Configured implements Tool {
         timePeriodJob.setMapperClass(TimePeriodMapper.class);
         timePeriodJob.setReducerClass(TimePeriodReducer.class);
 
-        FileInputFormat.setInputPaths(timePeriodJob, new Path(PathUtils.INPUT_PATH));
-        FileOutputFormat.setOutputPath(timePeriodJob, new Path(PathUtils.TEMP_PATH));
+        FileInputFormat.setInputPaths(timePeriodJob, new Path(INPUT_PATH));
+        FileOutputFormat.setOutputPath(timePeriodJob, new Path(TEMP_PATH));
 
         boolean success = timePeriodJob.waitForCompletion(true);
 
         // -------------------------------------------------
 
         if (success) {
-            FileUtils.deleteDirectory(new File(PathUtils.OUTPUT_PATH));
+            FileUtils.deleteDirectory(new File(OUTPUT_PATH));
             conf.set("mapred.textoutputformat.separator", " ");
             Job locationFindingJob = new Job(conf, "time period job");
 
@@ -104,8 +89,8 @@ public class QuestionOneJob extends Configured implements Tool {
             locationFindingJob.setMapperClass(LocationFindingMapper.class);
             locationFindingJob.setReducerClass(LocationFindingReducer.class);
 
-            FileInputFormat.setInputPaths(locationFindingJob, new Path(PathUtils.TEMP_PATH));
-            FileOutputFormat.setOutputPath(locationFindingJob, new Path(PathUtils.OUTPUT_PATH));
+            FileInputFormat.setInputPaths(locationFindingJob, new Path(TEMP_PATH));
+            FileOutputFormat.setOutputPath(locationFindingJob, new Path(OUTPUT_PATH));
 
             locationFindingJob.waitForCompletion(true);
         }

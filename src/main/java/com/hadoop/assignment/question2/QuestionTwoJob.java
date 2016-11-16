@@ -23,17 +23,30 @@ import java.io.File;
  */
 public class QuestionTwoJob extends Configured implements Tool {
 
-
+    public static String INPUT_PATH = PathUtils.TEMP_PATH;
+    public static String TEMP_PATH = PathUtils.TEMP_PATH;
+    public static String TEMP2_PATH = PathUtils.TEMP2_PATH;
+    public static String OUTPUT_PATH = PathUtils.OUTPUT_PATH;
+    
     public static void main(String[] args) throws Exception {
         ToolRunner.run(new Configuration(), new QuestionTwoJob(), args);
     }
 
     @Override
-    public int run(String[] strings) throws Exception {
+    public int run(String[] args) throws Exception {
         Configuration conf = getConf();
+        String currentDir = System.getProperty("user.dir");
+        if (args.length == 0) {
+            System.err.println("Please specified input parameters");
+        } else {
+            INPUT_PATH = currentDir + args[0];
+            OUTPUT_PATH = currentDir + args[1];
+            TEMP_PATH = currentDir + "temp";
+            TEMP2_PATH = currentDir + "temp2";
+        }
 
         //-----------------------------------------------------------
-        FileUtils.deleteDirectory(new File(PathUtils.TEMP_PATH));
+        FileUtils.deleteDirectory(new File(TEMP_PATH));
         conf.set("mapred.textoutputformat.separator", ",");
         Job job1 = new Job(conf, "job1");
 
@@ -51,15 +64,15 @@ public class QuestionTwoJob extends Configured implements Tool {
         job1.setMapperClass(LocationUserCountMapper.class);
         job1.setReducerClass(LocationUserCountReducer.class);
 
-        FileInputFormat.setInputPaths(job1, new Path(PathUtils.INPUT_PATH));
-        FileOutputFormat.setOutputPath(job1, new Path(PathUtils.TEMP_PATH));
+        FileInputFormat.setInputPaths(job1, new Path(INPUT_PATH));
+        FileOutputFormat.setOutputPath(job1, new Path(TEMP_PATH));
 
         boolean success = job1.waitForCompletion(true);
 
         // -------------------------------------------------
 
         if (success) {
-            FileUtils.deleteDirectory(new File(PathUtils.OUTPUT_PATH));
+            FileUtils.deleteDirectory(new File(OUTPUT_PATH));
 
             Job job2 = new Job(conf, "job2");
 
@@ -77,8 +90,8 @@ public class QuestionTwoJob extends Configured implements Tool {
             job2.setMapperClass(LocationCountMapper.class);
             job2.setReducerClass(LocationCountReducer.class);
 
-            FileInputFormat.setInputPaths(job2, new Path(PathUtils.TEMP_PATH));
-            FileOutputFormat.setOutputPath(job2, new Path(PathUtils.OUTPUT_PATH));
+            FileInputFormat.setInputPaths(job2, new Path(TEMP_PATH));
+            FileOutputFormat.setOutputPath(job2, new Path(OUTPUT_PATH));
 
             job2.waitForCompletion(true);
         }
