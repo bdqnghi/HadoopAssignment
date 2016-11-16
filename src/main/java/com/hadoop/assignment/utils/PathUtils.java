@@ -8,7 +8,7 @@ public class PathUtils {
     public static String TEMP_PATH = "/Users/quocnghi/hadoop/location-temp";
     public static String TEMP2_PATH = "/Users/quocnghi/hadoop/location-temp2";
     public static String OUTPUT_PATH = "/Users/quocnghi/hadoop/location-output";
-
+    public static String HDFS_FOLDER_PATH = "hdfs://eta1.larc.smu.edu.sg";
 //    public static String INPUT_PATH = "/home/quocnghi/hadoop_assignment/location-input";
 //    public static String TEMP_PATH = "/home/quocnghi/hadoop_assignment/location-temp";
 //    public static String TEMP2_PATH = "/home/quocnghi/hadoop_assignment/location-temp2";

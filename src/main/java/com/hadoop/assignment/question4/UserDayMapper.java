@@ -13,12 +13,14 @@ public class UserDayMapper extends Mapper<LongWritable, Text, Text, Text> {
 
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        String[] tokens = value.toString().split(",");
-        String userId = tokens[1];
-        String locationId = tokens[2];
-        String timestamp = tokens[0];
-        String[] times = timestamp.split(" ");
-        String day = times[0];
-        context.write(new Text(userId + "," + day), new Text(locationId));
+        if(!value.toString().equals("time,id,location")){
+            String[] tokens = value.toString().split(",");
+            String userId = tokens[1];
+            String locationId = tokens[2];
+            String timestamp = tokens[0];
+            String[] times = timestamp.split(" ");
+            String day = times[0];
+            context.write(new Text(userId + "," + day), new Text(locationId));
+        }
     }
 }

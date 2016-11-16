@@ -11,9 +11,11 @@ public class LocationUserCountMapper extends Mapper<LongWritable, Text, Text, In
 
     @Override
     public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        String[] tokens = value.toString().split(",");
-        String userId = tokens[1].trim();
-        String locationId = tokens[2].trim();
-        context.write(new Text(locationId + "," + userId), new IntWritable(1));
+        if(!value.toString().equals("time,id,location")){
+            String[] tokens = value.toString().split(",");
+            String userId = tokens[1].trim();
+            String locationId = tokens[2].trim();
+            context.write(new Text(locationId + "," + userId), new IntWritable(1));
+        }
     }
 }
