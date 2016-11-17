@@ -22,8 +22,6 @@ public class UserDayReducer extends Reducer<Text, Text, Text, Text> {
         }
 
         String join = StringUtils.join(set, ",");
-        String userId = userDayKey.toString().split(",")[0];
-
         context.write(userDayKey, new Text(join + "," + set.size()));
     }
 
