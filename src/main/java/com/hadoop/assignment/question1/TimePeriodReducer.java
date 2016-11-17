@@ -30,14 +30,20 @@ public class TimePeriodReducer extends Reducer<Text, Text, Text, IntWritable> {
         String previous = temp.get(0).toString();
         int sum = 0; // in seconds
         int spentTimes = 0;
+        int count = 1;
         for (String timestamp : temp) {
             int timeDiff = calculateTImeDiff(previous, timestamp);
-            if (timeDiff > 30) {
+            if (timeDiff > 70 || count == temp.size()) {
                 spentTimes = spentTimes + sum;
+                if (count == temp.size()) {
+                    spentTimes = spentTimes + timeDiff;
+                }
                 sum = 0;
+            } else {
+                sum = sum + timeDiff;
             }
-            sum = sum + timeDiff;
             previous = timestamp;
+            count++;
         }
         context.write(userLocationKey, new IntWritable(spentTimes));
     }

@@ -30,16 +30,23 @@ public class LocationUserReducer extends Reducer<Text, Text, Text, IntWritable> 
         List<String> list = new ArrayList<>(sortedSet);
         String previous = list.get(0);
         int residencyTime = 0; // in seconds
+        int count = 1;
         for (String timestamp : list) {
             int timeDiff = calculateTImeDiff(previous, timestamp);
-            if (timeDiff > 30) {
-                if(residencyTime >= 300){
+            if (timeDiff > 70 || count == list.size()) {
+                if (residencyTime >= 300) {
+                    if (count == list.size()) {
+                        residencyTime = residencyTime + timeDiff;
+                    }
                     context.write(locationUserKey, new IntWritable(residencyTime));
                 }
                 residencyTime = 0;
+            } else {
+                residencyTime = residencyTime + timeDiff;
+
             }
-            residencyTime = residencyTime + timeDiff;
             previous = timestamp;
+            count++;
         }
     }
 

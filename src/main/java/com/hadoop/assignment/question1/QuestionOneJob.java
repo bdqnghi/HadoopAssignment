@@ -41,16 +41,16 @@ public class QuestionOneJob extends Configured implements Tool {
         conf.set("fs.file.impl", org.apache.hadoop.fs.LocalFileSystem.class.getName());
         FileSystem hdfs = FileSystem.get(getConf());
 
-        String currentDir = System.getProperty("user.dir");
-        System.out.println("Current dir : " + currentDir);
-        if (args.length == 0) {
-            System.err.println("Please specified input parameters");
-        } else {
-            INPUT_PATH = args[0];
-            OUTPUT_PATH = args[1];
-            TEMP_PATH = "temp";
-            TEMP2_PATH = "temp2";
-        }
+//        String currentDir = System.getProperty("user.dir");
+//        System.out.println("Current dir : " + currentDir);
+//        if (args.length == 0) {
+//            System.err.println("Please specified input parameters");
+//        } else {
+//            INPUT_PATH = args[0];
+//            OUTPUT_PATH = args[1];
+//            TEMP_PATH = "temp";
+//            TEMP2_PATH = "temp2";
+//        }
         //-----------------------------------------------------------
         FileUtils.deleteDirectory(new File(TEMP_PATH));
         hdfs.delete(new Path(TEMP_PATH), true);
