@@ -10,7 +10,7 @@ import java.util.Comparator;
  */
 public class ComparatorUtils {
 
-    public static Comparator getDescendMinuteSecondComparator(){
+    public static Comparator getDescendMinuteSecondComparator() {
         return new Comparator<String>() {
             public int compare(String t1, String t2) {
                 String dateTimeString = t1.toString();
@@ -22,13 +22,15 @@ public class ComparatorUtils {
 
                 if (dt1.isBefore(dt2))
                     return -1;
-                else
+                else if (dt1.isAfter(dt2))
                     return 1;
+                else
+                    return 0;
             }
         };
     }
 
-    public static Comparator getDescendingIntegerComparator(){
+    public static Comparator getDescendingIntegerComparator() {
         return new Comparator<Integer>() {
             @Override
             public int compare(Integer i1, Integer i2) {
@@ -37,7 +39,7 @@ public class ComparatorUtils {
         };
     }
 
-    public static Comparator getDescendingYearMonthDayComparator(){
+    public static Comparator getDescendingYearMonthDayComparator() {
         return new Comparator<String>() {
             @Override
             public int compare(String t1, String t2) {
@@ -50,16 +52,15 @@ public class ComparatorUtils {
 
                 if (dt1.isBefore(dt2))
                     return -1;
+                else if (dt1.isAfter(dt2))
+                    return 1;
                 else
-                    if(dt1.isAfter(dt2))
-                        return 1;
-                    else
-                        return 0;
+                    return 0;
             }
         };
     }
 
-    public static Comparator getDescendingTimeStampComparator(){
+    public static Comparator getDescendingTimeStampComparator() {
         return new Comparator<String>() {
             @Override
             public int compare(String t1, String t2) {
@@ -72,11 +73,10 @@ public class ComparatorUtils {
 
                 if (dt1.isBefore(dt2))
                     return -1;
+                else if (dt1.isAfter(dt2))
+                    return 1;
                 else
-                    if(dt1.isAfter(dt2))
-                        return 1;
-                    else
-                        return 0;
+                    return 0;
             }
         };
     }

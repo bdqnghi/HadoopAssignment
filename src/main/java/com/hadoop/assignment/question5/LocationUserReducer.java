@@ -22,10 +22,9 @@ public class LocationUserReducer extends Reducer<Text, Text, Text, IntWritable> 
     @Override
     public void reduce(Text locationUserKey, Iterable<Text> values, Context context) throws IOException, InterruptedException {
         SortedSet<String> sortedSet = new TreeSet<>(ComparatorUtils.getDescendingTimeStampComparator());
-        int count = 0;
+
         for (Text value : values) {
             sortedSet.add(new String(value.toString()));
-            count++;
         }
 
         List<String> list = new ArrayList<>(sortedSet);
@@ -34,7 +33,9 @@ public class LocationUserReducer extends Reducer<Text, Text, Text, IntWritable> 
         for (String timestamp : list) {
             int timeDiff = calculateTImeDiff(previous, timestamp);
             if (timeDiff > 30) {
-                context.write(locationUserKey, new IntWritable(residencyTime));
+                if(residencyTime >= 300){
+                    context.write(locationUserKey, new IntWritable(residencyTime));
+                }
                 residencyTime = 0;
             }
             residencyTime = residencyTime + timeDiff;

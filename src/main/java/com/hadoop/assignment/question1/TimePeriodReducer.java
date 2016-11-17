@@ -1,7 +1,6 @@
 package com.hadoop.assignment.question1;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.IteratorUtils;
+import com.hadoop.assignment.utils.ComparatorUtils;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -19,60 +18,34 @@ public class TimePeriodReducer extends Reducer<Text, Text, Text, IntWritable> {
 
     @Override
     public void reduce(Text userLocationKey, Iterable<Text> values, Context context) throws IOException, InterruptedException {
-        List<String> temp =  new ArrayList<>();
 
-        for(Text value : values){
-            temp.add(new String(value.toString()));
+        SortedSet<String> sortedSet = new TreeSet<>(ComparatorUtils.getDescendingTimeStampComparator());
+
+        for (Text value : values) {
+            sortedSet.add(new String(value.toString()));
         }
 
-        temp = sort(temp);
-        if (temp.size() == 1) {
-            context.write(userLocationKey, new IntWritable(0));
-        } else {
+        List<String> temp = new ArrayList<>(sortedSet);
 
-            String previous = temp.get(0).toString();
-            int sum = 0;
-            for (String current : temp) {
-                if(previous.compareTo(current) == 0){
-                    continue;
-                }
-                else{
-                    String dateTimeString = previous;
-                    org.joda.time.format.DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-mm-dd HH:mm:ss");
-                    DateTime dt1 = formatter.parseDateTime(dateTimeString);
-
-                    dateTimeString = current.toString();
-                    DateTime dt2 = formatter.parseDateTime(dateTimeString);
-
-                    if (dt1.isBefore(dt2)) {
-                        Seconds seconds = Seconds.secondsBetween(dt1, dt2);
-                        sum = sum + seconds.getSeconds();
-
-                    }
-                    previous = current;
-                }
-
+        String previous = temp.get(0).toString();
+        int sum = 0; // in seconds
+        int spentTimes = 0;
+        for (String timestamp : temp) {
+            int timeDiff = calculateTImeDiff(previous, timestamp);
+            if (timeDiff > 30) {
+                spentTimes = spentTimes + sum;
+                sum = 0;
             }
-            context.write(userLocationKey, new IntWritable(sum));
+            sum = sum + timeDiff;
+            previous = timestamp;
         }
+        context.write(userLocationKey, new IntWritable(spentTimes));
     }
 
-    private List<String> sort(List<String> input) {
-        Collections.sort(input, new Comparator<String>() {
-            public int compare(String t1, String t2) {
-                String dateTimeString = t1.toString();
-                org.joda.time.format.DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-mm-dd HH:mm:ss");
-                DateTime dt1 = formatter.parseDateTime(dateTimeString);
-
-                dateTimeString = t2.toString();
-                DateTime dt2 = formatter.parseDateTime(dateTimeString);
-
-                if (dt1.isBefore(dt2))
-                    return -1;
-                else
-                    return 1;
-            }
-        });
-        return input;
+    private Integer calculateTImeDiff(String t1, String t2) {
+        org.joda.time.format.DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-mm-dd HH:mm:ss");
+        DateTime dt1 = formatter.parseDateTime(t1);
+        DateTime dt2 = formatter.parseDateTime(t2);
+        return Seconds.secondsBetween(dt1, dt2).getSeconds();
     }
 }
