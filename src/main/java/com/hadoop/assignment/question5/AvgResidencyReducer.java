@@ -20,6 +20,7 @@ public class AvgResidencyReducer extends Reducer<Text, Text, Text, DoubleWritabl
             descriptiveStatistics.addValue(new Double(value.toString().split(",")[1]));
         }
 
-        context.write(locationKey, new DoubleWritable(descriptiveStatistics.getMean()));
+        Double minutes = Double.valueOf(Math.round(descriptiveStatistics.getMean() / 60));
+        context.write(locationKey, new DoubleWritable(minutes));
     }
 }

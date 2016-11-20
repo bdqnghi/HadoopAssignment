@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="095deab4-7ce1-466d-847c-83f1d8530c66" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/QuestionFiveJob.java" afterPath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/QuestionFiveJob.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/QuestionFourJob.java" afterPath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/QuestionFourJob.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question1/QuestionOneJob.java" afterPath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question1/QuestionOneJob.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question3/QuestionThreeJob.java" afterPath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question3/QuestionThreeJob.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/QuestionTwoJob.java" afterPath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/QuestionTwoJob.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/AvgResidencyReducer.java" afterPath="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/AvgResidencyReducer.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HadoopAssigment.iws" />
@@ -35,14 +31,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="QuestionOneJob.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="QuestionOneJob.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question1/QuestionOneJob.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7442748">
-              <caret line="54" column="18" selection-start-line="45" selection-start-column="17" selection-end-line="54" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AvgResidencyReducer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/AvgResidencyReducer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.45801526">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -101,7 +107,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/QuestionFiveJob.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="111" column="66" selection-start-line="111" selection-start-column="66" selection-end-line="111" selection-end-column="66" />
+              <caret line="126" column="44" selection-start-line="126" selection-start-column="44" selection-end-line="126" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -141,7 +147,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/AverageResidencyMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/AverageResidencyReducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/AvgResidencyEachUserReducer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/AvgResidencyReducer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/utils/PathUtils.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question3/UserDayMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/UserDayMapper.java" />
@@ -160,6 +165,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question3/QuestionThreeJob.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question4/QuestionFourJob.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/QuestionFiveJob.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/AvgResidencyReducer.java" />
       </list>
     </option>
   </component>
@@ -1072,12 +1078,12 @@
       <workItem from="1479232014032" duration="5744000" />
       <workItem from="1479289842276" duration="2670000" />
       <workItem from="1479381827293" duration="7505000" />
-      <workItem from="1479639474440" duration="1753000" />
+      <workItem from="1479639474440" duration="3611000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17672000" />
+    <option name="totallyTimeSpent" value="19530000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="825" extended-state="6" />
@@ -1331,13 +1337,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/AvgResidencyReducer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="22" column="85" selection-start-line="22" selection-start-column="85" selection-end-line="22" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_72.jdk/Contents/Home/src.zip!/java/lang/Integer.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question2/LocationCountMapper.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1402,6 +1401,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42613637">
           <caret line="19" column="83" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1542,23 +1542,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/QuestionFiveJob.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question1/QuestionOneJob.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="111" column="66" selection-start-line="111" selection-start-column="66" selection-end-line="111" selection-end-column="66" />
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question1/QuestionOneJob.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/QuestionFiveJob.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7442748">
-          <caret line="54" column="18" selection-start-line="45" selection-start-column="17" selection-end-line="54" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="126" column="44" selection-start-line="126" selection-start-column="44" selection-end-line="126" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hadoop/assignment/question5/AvgResidencyReducer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45801526">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
