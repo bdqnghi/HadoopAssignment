@@ -85,7 +85,7 @@ public class QuestionTwoJob extends Configured implements Tool {
             FileUtils.deleteDirectory(new File(OUTPUT_PATH));
             hdfs.delete(new Path(OUTPUT_PATH), true);
 
-            conf.set("mapred.textoutputformat.separator", " ");
+            conf.set("mapred.textoutputformat.separator", "  ");
             Job job2 = new Job(conf, "job2");
 
             job2.setJarByClass(QuestionTwoJob.class);

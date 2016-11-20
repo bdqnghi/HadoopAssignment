@@ -82,7 +82,7 @@ public class QuestionOneJob extends Configured implements Tool {
         if (success) {
             FileUtils.deleteDirectory(new File(OUTPUT_PATH));
             hdfs.delete(new Path(OUTPUT_PATH), true);
-            conf.set("mapred.textoutputformat.separator", " ");
+            conf.set("mapred.textoutputformat.separator", "   ");
             Job locationFindingJob = new Job(conf, "time period job");
 
             locationFindingJob.setJarByClass(QuestionOneJob.class);

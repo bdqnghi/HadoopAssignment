@@ -100,12 +100,12 @@ public class QuestionFourJob extends Configured implements Tool {
             FileInputFormat.setInputPaths(job2, new Path(TEMP_PATH));
             FileOutputFormat.setOutputPath(job2, new Path(TEMP2_PATH));
 
-            boolean success2  = job2.waitForCompletion(true);
+            boolean success2 = job2.waitForCompletion(true);
 
-            if(success2){
+            if (success2) {
                 FileUtils.deleteDirectory(new File(OUTPUT_PATH));
                 hdfs.delete(new Path(OUTPUT_PATH), true);
-                conf.set("mapred.textoutputformat.separator", " ");
+                conf.set("mapred.textoutputformat.separator", "  ");
                 Job job3 = new Job(conf, "job3");
 
                 job3.setJarByClass(QuestionFourJob.class);
