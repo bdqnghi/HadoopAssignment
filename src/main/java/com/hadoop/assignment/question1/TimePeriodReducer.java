@@ -19,7 +19,7 @@ public class TimePeriodReducer extends Reducer<Text, Text, Text, IntWritable> {
     @Override
     public void reduce(Text userLocationKey, Iterable<Text> values, Context context) throws IOException, InterruptedException {
 
-        SortedSet<String> sortedSet = new TreeSet<>(ComparatorUtils.getDescendingTimeStampComparator());
+        SortedSet<String> sortedSet = new TreeSet<>(ComparatorUtils.getAscendingTimeStampComparator());
 
         for (Text value : values) {
             sortedSet.add(new String(value.toString()));

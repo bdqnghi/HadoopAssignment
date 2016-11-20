@@ -51,16 +51,16 @@ public class ComparatorUtils {
                 DateTime dt2 = formatter.parseDateTime(dateTimeString);
 
                 if (dt1.isBefore(dt2))
-                    return -1;
-                else if (dt1.isAfter(dt2))
                     return 1;
+                else if (dt1.isAfter(dt2))
+                    return -1;
                 else
                     return 0;
             }
         };
     }
 
-    public static Comparator getDescendingTimeStampComparator() {
+    public static Comparator getAscendingTimeStampComparator() {
         return new Comparator<String>() {
             @Override
             public int compare(String t1, String t2) {
