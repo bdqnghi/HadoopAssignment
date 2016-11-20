@@ -10,7 +10,7 @@ import java.util.Comparator;
  */
 public class ComparatorUtils {
 
-    public static Comparator getDescendMinuteSecondComparator() {
+    public static Comparator getAscendMinuteSecondComparator() {
         return new Comparator<String>() {
             public int compare(String t1, String t2) {
                 String dateTimeString = t1.toString();
